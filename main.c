@@ -23,6 +23,7 @@ int main(void)
 		if (cmd)
 		{
 			free(cmd);
+			cmd = NULL;
 			printf("main.c:24 freed non inter  cmd");
 
 		}
@@ -49,7 +50,7 @@ int main(void)
 		// 		perror("Main.c:29 Allocate Falier");
 		// 		return (0);
 		// 	}
-		int exst = inter_Active(&cmd, PathArr, argv);
+		int exst = inter_Active(cmd, PathArr, argv);
 
 		if (exst == -1)
 		{

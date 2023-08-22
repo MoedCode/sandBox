@@ -1,16 +1,8 @@
 #include "main.h"
-#include <string.h>
+
 
 extern char **environ;
-/*
-search
-acess();
-*/
 
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 /*
 int Execvp(const char *file, char *const argv[])
 {
@@ -99,14 +91,15 @@ int executeCommand(char *PATH, char **argv)
 			if(PATH != NULL)
 			{
 				free(PATH);
-				fprintf(stderr, "free PATH line: %d\n", __LINE__);
+				fprintf(stderr, "free  %s %d\n", __FILE__ ,__LINE__);
 
 
 			}
 			if(argv != NULL)
 			{
 					freeDoubleArray(argv);
-					fprintf(stderr, "free argv line: %d\n", __LINE__);
+					fprintf(stderr, "free  %s %d\n", __FILE__ ,__LINE__);
+
 
 
 			}
@@ -115,12 +108,12 @@ int executeCommand(char *PATH, char **argv)
 	 {
 		/* Fork failed */
 
-		fprintf(stderr, "sorry something went rong :) line: %d\n", __LINE__);
+		fprintf(stderr, "sorry something went rong :) %s%d\n",__FILE__,__LINE__);
 /* free mompry after fork failer */
 			if(PATH != NULL)
 			{
 				free(PATH);
-				fprintf(stderr, "free PATH line: %d\n", __LINE__);
+				fprintf(stderr, "free  %s %d\n", __FILE__ ,__LINE__);
 
 
 			}

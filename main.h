@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#define DEBUG(M) printf("%s%s:%d\n", M, __FILE__, __LINE__);
 
 /* Functions Prototype*/
 
@@ -26,7 +27,7 @@ size_t printDblArr(char** DblArr, size_t NullTrm);
 /**/
 
 
-int inter_Active( char **cmd, char **PathArr, char **argv);
+int inter_Active( char *cmd, char **PathArr, char **argv);
 int non_Inter_Active(char *cmd,char **PathArr,char **argv);
 
 char  **tokenize(char *cmd, char*  delim);

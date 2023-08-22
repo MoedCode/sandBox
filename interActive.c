@@ -4,17 +4,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-int inter_Active(char **cmd, char **PathArr, char **argv)
+int inter_Active(char *cmd, char **PathArr, char **argv)
 {
 
 	size_t cmdLen = 0;
 
 
 
-	int getLin = getline(cmd, &cmdLen, stdin);
+	int getLin = getline(&cmd, &cmdLen, stdin);
 	if (getLin == -1)
 	{
-    free(*cmd);
+    if (cmd)
+    {
+      free(cmd);
+      cmd = NULL;
+    }
 	 if (argv)
 			freeDoubleArray(argv);
 	 if (PathArr)
@@ -23,10 +27,10 @@ int inter_Active(char **cmd, char **PathArr, char **argv)
 	  return (getLin);
 	}
 
-	if (strcmp(*cmd, "exit\n") == 0) {
+	if (strcmp(cmd, "exit\n") == 0) {
 	 // printf("interAct exit.c:23\n");
   if (cmd)
-	  free(*cmd);
+	  free(cmd);
 	if (argv)
 			freeDoubleArray(argv);
 	if (PathArr)
@@ -38,7 +42,14 @@ int inter_Active(char **cmd, char **PathArr, char **argv)
 
 
 
-	argv = tokenize(*cmd, " \n");
+	argv = tokenize(cmd, " \n");
+
+  if (cmd)
+  {
+    free(cmd);
+    cmd= NULL;
+  }
+
 
 	if (argv == NULL || argv[0] == NULL) {
 		// continue to the next iteration of the loop

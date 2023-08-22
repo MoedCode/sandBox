@@ -12,8 +12,10 @@ char  **tokenize(char *cmd, char*  delim)
 	token = strtok(cmd, delim);
 	while (token)
 	{
-			if (cmd== NULL)
-   			 		cmd = "\n$";
+		if (cmd== NULL)
+		{
+			continue;
+		}
 		Tokens = realloc(Tokens, sizeof(char *) * (TksNum + 1));
 
 		if (!Tokens)
@@ -27,6 +29,8 @@ char  **tokenize(char *cmd, char*  delim)
 		// printf("tenize.c:25 %s\n",Tokens[TksNum]);
 		token = strtok(NULL, delim);
 		TksNum++;
+
+
 	}
 
 		Tokens = realloc(Tokens, (sizeof(char *) * (TksNum + 1)));
@@ -36,6 +40,7 @@ char  **tokenize(char *cmd, char*  delim)
 			perror("tokenaize.c:21 realloc");
 			return (NULL);
 		}
+
 
 		Tokens[TksNum] = NULL;
 
